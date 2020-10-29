@@ -1174,7 +1174,12 @@ function toggle_squad_details(player,action,shipCount)
     local pointInputList = nil
     local pilotInputList = nil
 
-    local scoreInput = ref_componentsData.score_counter[player]
+    local scoreInput = 0
+    if player == 1 then
+        scoreInput = ref_componentsData.score_counter[2]
+    else
+        scoreInput = ref_componentsData.score_counter[1]
+    end
 
     local importSquadButton = ref_componentsData.import_squad_button[player]
     local importSquadInput = ref_componentsData.import_squad_input[player]
@@ -1332,12 +1337,12 @@ function updateScore(player)
         buttonList = ref_componentsData.status_button_p1
         pointInputList = ref_componentsData.point_input_p1
         pilotInputList = ref_componentsData.pilot_input_p1
-        scoreInput = ref_componentsData.score_counter[1]
+        scoreInput = ref_componentsData.score_counter[2]
     else
         buttonList = ref_componentsData.status_button_p2
         pointInputList = ref_componentsData.point_input_p2
         pilotInputList = ref_componentsData.pilot_input_p2
-        scoreInput = ref_componentsData.score_counter[2]
+        scoreInput = ref_componentsData.score_counter[1]
     end
 
     for i, data in ipairs(pointInputList) do
