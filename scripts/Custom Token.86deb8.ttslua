@@ -1,6 +1,6 @@
 disableSave = true
 
-module_version = '1.0.0'
+module_version = '1.0.1'
 
 buttonFontColor = {0,0,0}
 buttonColor = {1,1,1}
@@ -104,6 +104,7 @@ xws_reference = {
         xiclasslightshuttle = "xi-class-light-shuttle",
         hmpdroidgunship = "hmp-droid-gunship",
         laatigunship = "laat-i-gunship",
+        tierbheavy = "tie-rb-heavy"
     }
 }
 
