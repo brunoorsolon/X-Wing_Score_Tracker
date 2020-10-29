@@ -1,0 +1,1453 @@
+disableSave = true
+
+module_version = '1.0.0'
+
+buttonFontColor = {0,0,0}
+buttonColor = {1,1,1}
+greenButton = {148/255, 255/255, 176/255}
+yellowButton = {246/255, 255/255, 176/255}
+redButton = {255/255, 118/255, 97/255}
+
+shipColor1   = {255/255, 255/255, 255/255} -- white
+shipColor2   = {255/255, 255/255, 54/255} -- yellow
+shipColor3   = {33/255, 255/255, 91/255} -- green
+shipColor4   = {255/255, 69/255, 41/255} -- red
+shipColor5   = {94/255, 167/255, 255/255} -- bue
+shipColor6   = {255/255, 54/255, 242/255} -- pink
+shipColor7   = {255/255, 187/255, 0/255} -- orange
+shipColor8   = {128/255, 0/255, 255/255} -- purple
+
+inputColor = {1,1,1,0}
+inputFontColor = {0,0,0,255}
+
+buttonScale = {0.1,0.1,0.1}
+scoreScale = {0.2,0.2,0.2}
+
+xws_reference = {
+    factions = {
+        rebelalliance = "rebel-alliance",
+        galacticempire = "galactic-empire",
+        scumandvillainy = "scum-and-villainy",
+        resistance = "resistance",
+        firstorder = "first-order",
+        galacticrepublic = "galactic-republic",
+        separatistalliance = "separatist-alliance"
+    },
+    ships = {
+        modifiedyt1300lightfreighter = "modified-yt-1300-light-freighter",
+        starviperclassattackplatform = "starviper-class-attack-platform",
+        scurrgh6bomber = "scurrg-h6-bomber",
+        yt2400lightfreighter = "yt-2400-light-freighter",
+        auzituckgunship = "auzituck-gunship",
+        kihraxzfighter = "kihraxz-fighter",
+        sheathipedeclassshuttle = "sheathipede-class-shuttle",
+        quadrijettransferspacetug = "quadrijet-transfer-spacetug",
+        firesprayclasspatrolcraft = "firespray-class-patrol-craft",
+        tielnfighter = "tie-ln-fighter",
+        btla4ywing = "btl-a4-y-wing",
+        tieadvancedx1 = "tie-advanced-x1",
+        alphaclassstarwing = "alpha-class-star-wing",
+        ut60duwing = "ut-60d-uwing",
+        tieskstriker = "tie-sk-striker",
+        asf01bwing = "a-sf-01-bwing",
+        tieddefender = "tie-d-defender",
+        tiesabomber = "tie-sa-bomber",
+        tiecapunisher = "tie-ca-punisher",
+        aggressorassaultfighter = "aggressor-assault-fighter",
+        g1astarfighter = "g-1a-starfighter",
+        vcx100lightfreighter = "vcx-100-light-freighter",
+        yv666lightfreighter = "yv-666-light-freighter",
+        tieadvancedv1 = "tie-advanced-v1",
+        lambdaclasst4ashuttle = "lambda-class-t-4a-shuttle",
+        tiephphantom = "tie-ph-phantom",
+        vt49decimator = "vt-49-decimator",
+        tieagaggressor = "tie-ag-aggressor",
+        btls8kwing = "btl-s8-k-wing",
+        arc170starfighter = "arc-170-starfighter",
+        attackshuttle = "attack-shuttle",
+        t65xwing = "t-65-x-wing",
+        hwk290lightfreighter = "hwk-290-light-freighter",
+        rz1awing = "rz-1-a-wing",
+        fangfighter = "fang-fighter",
+        z95af4headhunter = "z-95-af4-headhunter",
+        m12lkimogilafighter = "m12-l-kimogila-fighter",
+        ewing = "e-wing",
+        tieininterceptor = "tie-in-interceptor",
+        lancerclasspursuitcraft = "lancer-class-pursuit-craft",
+        tiereaper = "tie-reaper",
+        m3ainterceptor = "m3-a-interceptor",
+        jumpmaster5000 = "jumpmaster-5000",
+        customizedyt1300lightfreighter = "customized-yt-1300-light-freighter",
+        escapecraft = "escape-craft",
+        tiefofighter = "tie-fo-fighter",
+        tiesffighter = "tie-sf-fighter",
+        upsilonclassshuttle = "upsilon-classs-huttle",
+        tievnsilencer = "tie-vn-silencer",
+        t70xwing = "t-70-x-wing",
+        rz2awing = "rz-2-a-wing",
+        mg100starfortress = "mg-100-starfortress-sf-17",
+        modifiedtielnfighter = "modified-tie-ln-fighter",
+        scavengedyt1300 = "scavenged-yt-1300",
+        belbullab22starfighter = "belbullab-22-starfighter",
+        vultureclassdroidfighter = "vulture-class-droid-fighter",
+        sithinfiltrator = "sith-infiltrator",
+        delta7aethersprite = "delta-7-aethersprite",
+        v19torrentstarfighter = "v-19-torrent-starfighter",
+        nabooroyaln1starfighter = "naboo-royal-n-1-starfighter",
+        resistancetransport = "resistance-transport",
+        resistancetransportpod = "resistance-transport-pod",
+        hyenaclassdroidbomber = "hyena-class-droid-bomber",
+        nantexclassstarfighter = "nantex-class-starfighter",
+        btlbywing = "btl-b-y-wing",
+        tiebainterceptor = "tie-ba-interceptor",
+        fireball = "fireball",
+        xiclasslightshuttle = "xi-class-light-shuttle",
+        hmpdroidgunship = "hmp-droid-gunship",
+        laatigunship = "laat-i-gunship",
+    }
+}
+
+componentsData = {
+    score_counter = {
+        --PLAYER 1
+        {
+            pos        = {-0.350,0.1,-0.850},
+            rows       = 1,
+            width      = 1600,
+            font_size  = 1000,
+            alignment  = 3,
+            label      = '0',
+            value      = '0',
+            inputIndex = 0
+        },
+        --PLAYER 2
+        {
+            pos        = {0.350,0.1,-0.850},
+            rows       = 1,
+            width      = 1600,
+            font_size  = 1000,
+            alignment  = 3,
+            label      = '0',
+            value      = '0',
+            inputIndex = 0
+        },
+        --End of score counters
+    },
+    import_squad_button = {
+        --IMPORT SQUAD BUTTONS
+        --PLAYER 1
+        {
+            pos         = {-1.070,0.1,-0.650},
+            size        = 700,
+            value       = 'Import Squadron',
+            buttonIndex = 0
+        },
+        --PLAYER 2
+        {
+            pos         = {0.800,0.1,-0.650},
+            size        = 700,
+            value       = 'Import Squadron',
+            buttonIndex = 0
+        },
+    },
+    clear_squad_button = {
+        --IMPORT SQUAD BUTTONS
+        --PLAYER 1
+        {
+            pos         = {-0.200,0.1,-0.550},
+            size        = 700,
+            value       = 'X',
+            buttonIndex = 0
+        },
+        --PLAYER 2
+        {
+            pos         = {1.650,0.1,-0.550},
+            size        = 700,
+            value       = 'X',
+            buttonIndex = 0
+        },
+    },
+    reset_squad_button = {
+        --IMPORT SQUAD BUTTONS
+        --PLAYER 1
+        {
+            pos         = {-1.070,0.0,-0.575},
+            size        = 700,
+            value       = 'Reset Squadron',
+            buttonIndex = 0
+        },
+        --PLAYER 2
+        {
+            pos         = {0.800,0.0,-0.575},
+            size        = 700,
+            value       = 'Reset Squadron',
+            buttonIndex = 0
+        },
+    },
+    import_squad_input = {
+        --PLAYER #1
+        {
+            pos        = {-0.925,0.1,0.210},
+            rows       = 16,
+            width      = 8775,
+            height     = 6700,
+            font_size  = 300,
+            alignment  = 2,
+            label      = 'Enter YASB URL or XWS data here',
+            value      = '',
+            inputIndex = 0,
+        },
+        --PLAYER #2
+        {
+            pos        = {0.940,0.1,0.210},
+            rows       = 16,
+            width      = 8775,
+            height     = 6700,
+            font_size  = 300,
+            alignment  = 2,
+            label      = 'Enter YASB URL or XWS data here',
+            value      = '',
+            inputIndex = 0,
+        },
+    },
+    pilot_input_p1 = {
+        --PILOT #1
+        {
+            pos        = {-1.160,0.0,-0.300},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #2
+        {
+            pos        = {-1.160,0.0,-0.140},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #3
+        {
+            pos        = {-1.160,0.0,0.020},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #4
+        {
+            pos        = {-1.160,0.0,0.180},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #5
+        {
+            pos        = {-1.160,0.0,0.340},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #6
+        {
+            pos        = {-1.160,0.0,0.500},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #7
+        {
+            pos        = {-1.160,0.0,0.660},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #8
+        {
+            pos        = {-1.160,0.0,0.820},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+    },
+    pilot_input_p2 = {
+        --PILOT #1
+        {
+            pos        = {0.710,0.0,-0.300},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #2
+        {
+            pos        = {0.710,0.0,-0.140},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #3
+        {
+            pos        = {0.710,0.0,0.020},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #4
+        {
+            pos        = {0.710,0.0,0.180},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #5
+        {
+            pos        = {0.710,0.0,0.340},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #6
+        {
+            pos        = {0.710,0.0,0.500},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #7
+        {
+            pos        = {0.710,0.0,0.660},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+        --PILOT #8
+        {
+            pos        = {0.710,0.0,0.820},
+            rows       = 1,
+            width      = 5030,
+            font_size  = 400,
+            alignment  = 2,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            shipCode   = '',
+            pilotCode  = ''
+        },
+    },
+    point_input_p1 = {
+        --SCORE #1
+        {
+            pos        = {-0.550,0.0,-0.300},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '0',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #2
+        {
+            pos        = {-0.550,0.0,-0.140},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '0',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #3
+        {
+            pos        = {-0.550,0.0,0.020},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '0',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #4
+        {
+            pos        = {-0.550,0.0,0.180},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #5
+        {
+            pos        = {-0.550,0.0,0.340},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #6
+        {
+            pos        = {-0.550,0.0,0.500},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #7
+        {
+            pos        = {-0.550,0.0,0.660},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #8
+        {
+            pos        = {-0.550,0.0,0.820},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            multiplier = 0
+        },
+    },
+    point_input_p2 = {
+        --SCORE #1
+        {
+            pos        = {1.320,0.0,-0.300},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '0',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #2
+        {
+            pos        = {1.320,0.0,-0.140},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '0',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #3
+        {
+            pos        = {1.320,0.0,0.020},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '0',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #4
+        {
+            pos        = {1.320,0.0,0.180},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '0',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #5
+        {
+            pos        = {1.320,0.0,0.340},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '0',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #6
+        {
+            pos        = {1.320,0.0,0.500},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #7
+        {
+            pos        = {1.320,0.0,0.660},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            multiplier = 0
+        },
+        --SCORE #8
+        {
+            pos        = {1.320,0.0,0.820},
+            rows       = 1,
+            width      = 800,
+            font_size  = 400,
+            alignment  = 3,
+            label      = '',
+            value      = '',
+            inputIndex = 0,
+            multiplier = 0
+        },
+    },
+    status_button_p1 = {
+        --PILOT #1
+        {
+            pos         = {-0.320,0.0,-0.305},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #2
+        {
+            pos         = {-0.320,0.0,-0.145},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #3
+        {
+            pos         = {-0.320,0.0,0.015},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #4
+        {
+            pos         = {-0.320,0.0,0.175},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #5
+        {
+            pos         = {-0.320,0.0,0.335},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #6
+        {
+            pos         = {-0.320,0.0,0.495},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #7
+        {
+            pos         = {-0.320,0.0,0.655},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #8
+        {
+            pos         = {-0.320,0.0,0.815},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+    },
+    status_button_p2 = {
+        --PILOT #1
+        {
+            pos         = {1.555,0.0,-0.305},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #2
+        {
+            pos         = {1.555,0.0,-0.145},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #3
+        {
+            pos         = {1.555,0.0,0.015},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #4
+        {
+            pos         = {1.555,0.0,0.175},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #5
+        {
+            pos         = {1.555,0.0,0.335},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #6
+        {
+            pos         = {1.555,0.0,0.495},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #7
+        {
+            pos         = {1.555,0.0,0.655},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+        --PILOT #8
+        {
+            pos         = {1.555,0.0,0.815},
+            size        = 700,
+            value       = 'Full',
+            buttonIndex = 0
+        },
+    },
+    ship_color_button_p1 = {
+        --PILOT #1
+        {
+            pos         = {-1.805,0.0,-0.305},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #2
+        {
+            pos         = {-1.805,0.0,-0.145},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #3
+        {
+            pos         = {-1.805,0.0,0.015},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #4
+        {
+            pos         = {-1.805,0.0,0.175},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #5
+        {
+            pos         = {-1.805,0.0,0.335},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #6
+        {
+            pos         = {-1.805,0.0,0.495},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #7
+        {
+            pos         = {-1.805,0.0,0.655},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #8
+        {
+            pos         = {-1.805,0.0,0.815},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+    },
+    ship_color_button_p2 = {
+        --PILOT #1
+        {
+            pos         = {0.065,0.0,-0.305},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #2
+        {
+            pos         = {0.065,0.0,-0.145},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #3
+        {
+            pos         = {0.065,0.0,0.015},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #4
+        {
+            pos         = {0.065,0.0,0.175},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #5
+        {
+            pos         = {0.065,0.0,0.335},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #6
+        {
+            pos         = {0.065,0.0,0.495},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #7
+        {
+            pos         = {0.065,0.0,0.655},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        --PILOT #8
+        {
+            pos         = {0.065,0.0,0.815},
+            size        = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+    },
+}
+
+--Save function
+function updateSave()
+    saved_data = JSON.encode(ref_componentsData)
+    if disableSave==true then saved_data="" end
+    self.script_state = saved_data
+end
+
+--Startup procedure
+function onload(saved_data)
+    if disableSave==true then saved_data="" end
+    if saved_data ~= "" then
+        local loaded_data = JSON.decode(saved_data)
+        ref_componentsData = loaded_data
+    else
+        ref_componentsData = componentsData
+    end
+
+    spawnedButtonCount = 0
+    spawnedInputCount = 0
+
+    createImportSquadButton()
+    createImportSquadInput()
+    createResetSquadButton()
+    createClearSquadButton()
+
+    createScoreCounter()
+
+    createPilotInput("p1")
+    createPointInput("p1")
+
+    createPilotInput("p2")
+    createPointInput("p2")
+
+    createStatusButton("p1")
+    createStatusButton("p2")
+
+    createShipColorButton("p1")
+    createShipColorButton("p2")
+
+    local funcName = "moduleVersion"
+    local func = function(_,_,val,sel) click_none() end
+    self.setVar(funcName, func)
+
+    self.createInput({
+        input_function = funcName,
+        function_owner = self,
+        label          = '',
+        alignment      = 2,
+        position       = {1.7,0.1,-1.4},
+        scale          = {-0.1, 0.1, 0.1},
+        width          = 1400,
+        height         = 225,
+        font_size      = 200,
+        color          = inputColor,
+        font_color     = inputFontColor,
+        value          = 'Version: '..module_version,
+        rotation       = {x=180, y=180, z=0},
+    })
+
+    spawnedInputCount = spawnedInputCount + 1
+end
+
+--Makes score counters
+function createScoreCounter()
+    for i, data in ipairs(ref_componentsData.score_counter) do
+        --Sets up reference function
+        local funcName = "textbox"..i
+        local func = function(_,_,val,sel) click_none() end
+        self.setVar(funcName, func)
+
+        self.createInput({
+            input_function = funcName,
+            function_owner = self,
+            label          = data.label,
+            alignment      = data.alignment,
+            position       = data.pos,
+            scale          = {-0.15, 0.15, 0.15},
+            width          = data.width,
+            height         = (data.font_size*data.rows)-200,
+            font_size      = data.font_size,
+            color          = {200/255, 200/255, 200/255,255},
+            font_color     = inputFontColor,
+            value          = data.value,
+            rotation       = {x=180, y=180, z=0},
+        })
+        data.inputIndex = spawnedInputCount
+        spawnedInputCount = spawnedInputCount + 1
+    end
+end
+
+--Makes pilot name inputs
+function createPilotInput(player)
+    local pilotInputList = nil
+    if player == 'p1' then
+        pilotInputList = ref_componentsData.pilot_input_p1
+    else
+        pilotInputList = ref_componentsData.pilot_input_p2
+    end
+    for i, data in ipairs(pilotInputList) do
+        --Sets up reference function
+        local funcName = "textboxPilot"..player..i
+        local func = function(_,_,val,sel) click_none() end
+        self.setVar(funcName, func)
+
+        self.createInput({
+            input_function = funcName,
+            function_owner = self,
+            label          = data.label,
+            alignment      = data.alignment,
+            position       = data.pos,
+            scale          = {-0.1, 0.1, 0.1},
+            width          = data.width,
+            height         = (data.font_size*data.rows)+24,
+            font_size      = data.font_size,
+            color          = inputColor,
+            font_color     = inputFontColor,
+            value          = data.value,
+            rotation       = {x=180, y=180, z=0},
+        })
+        data.inputIndex = spawnedInputCount
+        spawnedInputCount = spawnedInputCount + 1
+    end
+end
+
+--Makes points inputs
+function createPointInput(player)
+    local pointInputList = nil
+    if
+        player == 'p1'
+    then
+        pointInputList = ref_componentsData.point_input_p1
+    else
+        pointInputList = ref_componentsData.point_input_p2
+    end
+    for i, data in ipairs(pointInputList) do
+        --Sets up reference function
+        local funcName = "textboxPoint"..player..i
+        local func = function(_,_,val,sel) click_none() end
+        self.setVar(funcName, func)
+
+        self.createInput({
+            input_function = funcName,
+            function_owner = self,
+            label          = data.label,
+            alignment      = data.alignment,
+            position       = data.pos,
+            scale          = {-0.1, 0.1, 0.1},
+            width          = data.width,
+            height         = (data.font_size*data.rows)+24,
+            font_size      = data.font_size,
+            color          = inputColor,
+            font_color     = inputFontColor,
+            value          = data.value,
+            rotation       = {x=180, y=180, z=0},
+        })
+        data.inputIndex = spawnedInputCount
+        spawnedInputCount = spawnedInputCount + 1
+    end
+end
+
+--Makes import squad buttons
+function createImportSquadButton()
+    for i, data in ipairs(ref_componentsData.import_squad_button) do
+        local funcName = "importSquadron"..i
+        local func = function() click_import_squadron(i) end
+        self.setVar(funcName, func)
+        local label = data.value
+        local offsetDistance = (data.size/2 + data.size/4) * (buttonScale[1] * 0.002)
+        local pos = {data.pos[1] + offsetDistance, data.pos[2], data.pos[3]}
+        local size = data.size / 2
+        data.buttonIndex = spawnedButtonCount
+        self.createButton({
+            label=label, click_function=funcName, function_owner=self,
+            position=pos, height=size*1.3, width=size*8,
+            font_size=size, scale=buttonScale,
+            color=buttonColor, font_color=buttonFontColor
+        })
+        spawnedButtonCount = spawnedButtonCount + 1
+    end
+end
+
+--Makes squad import inputs
+function createImportSquadInput()
+    for i, data in ipairs(ref_componentsData.import_squad_input) do
+        --Sets up reference function
+        local funcName = "textboxImport"..i
+        local func = function(_,_,val,sel) updateSquadImportInput(i, spawnedInputCount, val, sel) end
+        self.setVar(funcName, func)
+
+        self.createInput({
+            input_function = funcName,
+            function_owner = self,
+            label          = data.label,
+            alignment      = data.alignment,
+            position       = data.pos,
+            scale          = {0.1, 0.1, 0.1},
+            width          = data.width,
+            height         = data.height,
+            font_size      = data.font_size,
+            color          = {1,1,1},
+            font_color     = {0,0,0},
+            value          = data.value,
+            tooltip        = 'Enter YASB URL or XWS data here'
+
+        })
+        data.inputIndex = spawnedInputCount
+        spawnedInputCount = spawnedInputCount + 1
+    end
+end
+
+--Makes import squad buttons
+function createResetSquadButton()
+    for i, data in ipairs(ref_componentsData.reset_squad_button) do
+        local funcName = "resetSquadron"..i
+        local func = function() click_reset_squadron(i) end
+        self.setVar(funcName, func)
+        local label = data.value
+        local offsetDistance = (data.size/2 + data.size/4) * (buttonScale[1] * 0.002)
+        local pos = {data.pos[1] + offsetDistance, data.pos[2], data.pos[3]}
+        local size = data.size / 2
+        data.buttonIndex = spawnedButtonCount
+        self.createButton({
+            label=label, click_function=funcName, function_owner=self,
+            position=pos, height=size*1.3, width=size*8,
+            font_size=size, scale=buttonScale,
+            color=buttonColor, font_color=buttonFontColor
+        })
+        spawnedButtonCount = spawnedButtonCount + 1
+    end
+end
+
+--Makes import squad buttons
+function createClearSquadButton()
+    for i, data in ipairs(ref_componentsData.clear_squad_button) do
+        local funcName = "clearSquadronInputText"..i
+        local func = function() click_clear_squad_input_text(i) end
+        self.setVar(funcName, func)
+        local label = data.value
+        local offsetDistance = (data.size/2 + data.size/4) * (buttonScale[1] * 0.002)
+        local pos = {data.pos[1] + offsetDistance, data.pos[2], data.pos[3]}
+        local size = data.size / 2
+        data.buttonIndex = spawnedButtonCount
+        self.createButton({
+            label=label, click_function=funcName, function_owner=self,
+            position=pos, height=size*1.3, width=size*1.3,
+            font_size=size, scale=buttonScale,
+            color={255/255, 69/255, 41/255}, hover_color={255/255, 69/255, 41/255}, press_color={255/255, 69/255, 41/255}, font_color={1,1,1},
+            tooltip='Clear text'
+        })
+        spawnedButtonCount = spawnedButtonCount + 1
+    end
+end
+
+--Makes status buttons
+function createStatusButton(player)
+    local components = nil
+    if player == 'p1' then
+        components = ref_componentsData.status_button_p1
+    else
+        components = ref_componentsData.status_button_p2
+    end
+    for i, data in ipairs(components) do
+        local funcName = "changeStatus"..player..i
+        local func = function() click_change_status(i, player) end
+        self.setVar(funcName, func)
+        local label = data.value
+        local offsetDistance = (data.size/2 + data.size/4) * (buttonScale[1] * 0.002)
+        local pos = {data.pos[1] + offsetDistance, data.pos[2], data.pos[3]}
+        local size = data.size / 2
+        data.buttonIndex = spawnedButtonCount
+        self.createButton({
+            label=label, click_function=funcName, function_owner=self,
+            position=pos, height=size*1.3, width=size*5.5,
+            font_size=size, scale=buttonScale,
+            color=greenButton, font_color=buttonFontColor, hover_color=greenButton, press_color=greenButton
+        })
+        spawnedButtonCount = spawnedButtonCount + 1
+    end
+end
+
+--Makes pilot color buttons
+function createShipColorButton(player)
+    local components = nil
+    if player == 'p1' then
+        components = ref_componentsData.ship_color_button_p1
+    else
+        components = ref_componentsData.ship_color_button_p2
+    end
+    for i, data in ipairs(components) do
+        local funcName = "changeColor"..player..i
+        local func = function() click_change_color(i, player) end
+        self.setVar(funcName, func)
+        data.buttonIndex = spawnedButtonCount
+        self.createButton({
+            label='', click_function=funcName, function_owner=self,
+            position={data.pos[1], data.pos[2], data.pos[3]}, height=data.size, width=data.size,
+            font_size=data.size, scale={0.5,0.5,0.5},
+            color=shipColor1, font_color=buttonFontColor, hover_color=shipColor1, press_color=shipColor1
+        })
+
+        spawnedButtonCount = spawnedButtonCount + 1
+    end
+end
+
+--Dummy Click function
+function click_none() end
+
+function click_reset_squadron(tableIndex)
+    toggle_squad_details(tableIndex,'hide',8)
+end
+
+function click_clear_squad_input_text(tableIndex)
+    local importSquadInput = ref_componentsData.import_squad_input[tableIndex]
+    self.editInput({index=importSquadInput.inputIndex, value=''})
+end
+
+function toggle_squad_details(player,action,shipCount)
+    local statusButtonList = nil
+    local shipColorButtonList = nil
+    local pointInputList = nil
+    local pilotInputList = nil
+
+    local scoreInput = ref_componentsData.score_counter[player]
+
+    local importSquadButton = ref_componentsData.import_squad_button[player]
+    local importSquadInput = ref_componentsData.import_squad_input[player]
+    local resetSquadButton = ref_componentsData.reset_squad_button[player]
+    local clearSquadTextButton = ref_componentsData.clear_squad_button[player]
+
+    local detailsPos = 0.0
+    local importPos = 0.0
+    local importWitdh = 0
+    local importHeight = 0
+
+    if player == 1 then
+        statusButtonList = ref_componentsData.status_button_p1
+        shipColorButtonList = ref_componentsData.ship_color_button_p1
+        pointInputList = ref_componentsData.point_input_p1
+        pilotInputList = ref_componentsData.pilot_input_p1
+    else
+        statusButtonList = ref_componentsData.status_button_p2
+        shipColorButtonList = ref_componentsData.ship_color_button_p2
+        pointInputList = ref_componentsData.point_input_p2
+        pilotInputList = ref_componentsData.pilot_input_p2
+
+    end
+
+    if action == 'hide' then
+        importPos = 0.1
+        importWitdh = 8775
+        importHeight = 6700
+    else
+        detailsPos = 0.1
+    end
+
+
+    for i=1, shipCount, 1 do
+        if action == 'hide' then
+            --status button
+            statusButtonList[i].value='Full'
+            self.editButton({index=statusButtonList[i].buttonIndex, position={statusButtonList[i].pos[1]+0.110,detailsPos,statusButtonList[i].pos[3]},label='Full',color=greenButton,hover_color=greenButton,hover_color=greenButton})
+            --ship color button
+            shipColorButtonList[i].shipColorId = 1
+            self.editButton({index=shipColorButtonList[i].buttonIndex, position={shipColorButtonList[i].pos[1],detailsPos,shipColorButtonList[i].pos[3]}, color=shipColor1, hover_color=shipColor1, hover_color=shipColor1})
+            --points input
+            pointInputList[i].value = 0
+            pointInputList[i].multiplier = 0
+            self.editInput({index=pointInputList[i].inputIndex, position={pointInputList[i].pos[1],detailsPos,pointInputList[i].pos[3]},value=0})
+            --pilot input
+            pilotInputList[i].value = ''
+            pilotInputList[i].shipCode = ''
+            pilotInputList[i].pilotCode = ''
+            self.editInput({index=pilotInputList[i].inputIndex, position={pilotInputList[i].pos[1],detailsPos,pilotInputList[i].pos[3]},value=''})
+        else
+            --status button
+            self.editButton({index=statusButtonList[i].buttonIndex, position={statusButtonList[i].pos[1]+0.110,detailsPos,statusButtonList[i].pos[3]}})
+            --ship color button
+            self.editButton({index=shipColorButtonList[i].buttonIndex, position={shipColorButtonList[i].pos[1],detailsPos,shipColorButtonList[i].pos[3]}})
+            --points input
+            self.editInput({index=pointInputList[i].inputIndex, position={pointInputList[i].pos[1],detailsPos,pointInputList[i].pos[3]}})
+            --pilot input
+            self.editInput({index=pilotInputList[i].inputIndex, position={pilotInputList[i].pos[1],detailsPos,pilotInputList[i].pos[3]}})
+        end
+    end
+
+    --player score input
+    scoreInput.value = 0
+    self.editInput({index=scoreInput.inputIndex, value=0})
+    --import squad button
+    self.editButton({index=importSquadButton.buttonIndex, position={importSquadButton.pos[1]+0.110,importPos,importSquadButton.pos[3]}})
+    --import squadron input
+    self.editInput({index=importSquadInput.inputIndex, value='', position={importSquadInput.pos[1],importPos,importSquadInput.pos[3]}, width=importWitdh, height=importHeight})
+    --reset squad button
+    self.editButton({index=resetSquadButton.buttonIndex, position={resetSquadButton.pos[1]+0.110,detailsPos,resetSquadButton.pos[3]}})
+    --clear squad text button
+    self.editButton({index=clearSquadTextButton.buttonIndex, position={clearSquadTextButton.pos[1]+0.110,importPos,clearSquadTextButton.pos[3]}})
+end
+
+--Chnage ship identifier color
+function click_change_color(tableIndex, player)
+    local buttonList = nil
+
+    if player == 'p1' then
+        buttonList = ref_componentsData.ship_color_button_p1
+    else
+        buttonList = ref_componentsData.ship_color_button_p2
+    end
+
+    local newShipColorId = buttonList[tableIndex].shipColorId + 1
+    if newShipColorId > 8 then newShipColorId = 1 end
+    local newColorCode = {0,0,0}
+
+    if newShipColorId == 1 then
+        newColorCode = shipColor1
+    elseif newShipColorId == 2 then
+        newColorCode = shipColor2
+    elseif newShipColorId == 3 then
+        newColorCode = shipColor3
+    elseif newShipColorId == 4 then
+        newColorCode = shipColor4
+    elseif newShipColorId == 5 then
+        newColorCode = shipColor5
+    elseif newShipColorId == 6 then
+        newColorCode = shipColor6
+    elseif newShipColorId == 7 then
+        newColorCode = shipColor7
+    elseif newShipColorId == 8 then
+        newColorCode = shipColor8
+    end
+
+    buttonList[tableIndex].shipColorId = newShipColorId
+    self.editButton({index=buttonList[tableIndex].buttonIndex, color=newColorCode, hover_color=newColorCode, press_color=newColorCode})
+    updateSave()
+end
+
+--Update pilot status and total score
+function click_change_status(tableIndex, player)
+    local buttonList = nil
+    local pointInputList = nil
+
+    if player == 'p1' then
+        buttonList = ref_componentsData.status_button_p1
+        pointInputList = ref_componentsData.point_input_p1
+    else
+        buttonList = ref_componentsData.status_button_p2
+        pointInputList = ref_componentsData.point_input_p2
+    end
+
+    if (buttonList[tableIndex].value) == "Full" then
+        buttonList[tableIndex].value = "Half"
+        buttonList[tableIndex].statusColor = yellowButton
+        pointInputList[tableIndex].multiplier = 0.5
+    elseif (buttonList[tableIndex].value) == "Half" then
+        buttonList[tableIndex].value = "Destroyed"
+        buttonList[tableIndex].statusColor = redButton
+        pointInputList[tableIndex].multiplier = 1
+    elseif (buttonList[tableIndex].value) == "Destroyed" then
+        buttonList[tableIndex].value = "Full"
+        buttonList[tableIndex].statusColor = greenButton
+        pointInputList[tableIndex].multiplier = 0
+    end
+    self.editButton({index=buttonList[tableIndex].buttonIndex, label=buttonList[tableIndex].value, color=buttonList[tableIndex].statusColor, hover_color=buttonList[tableIndex].statusColor, press_color=buttonList[tableIndex].statusColor})
+    updateScore(player)
+    updateSave()
+end
+
+--Uptade total score
+function updateScore(player)
+    local buttonList = nil
+    local pointInputList = nil
+    local pilotInputList = nil
+    local scoreInput = nil
+    local newScore = 0
+    local pilotCount = 0
+    local destroyedCount = 0
+
+    if player == 'p1' then
+        buttonList = ref_componentsData.status_button_p1
+        pointInputList = ref_componentsData.point_input_p1
+        pilotInputList = ref_componentsData.pilot_input_p1
+        scoreInput = ref_componentsData.score_counter[1]
+    else
+        buttonList = ref_componentsData.status_button_p2
+        pointInputList = ref_componentsData.point_input_p2
+        pilotInputList = ref_componentsData.pilot_input_p2
+        scoreInput = ref_componentsData.score_counter[2]
+    end
+
+    for i, data in ipairs(pointInputList) do
+        if pilotInputList[i].value != "" then
+            pilotCount = pilotCount + 1
+            if pointInputList[i].multiplier == 1 then destroyedCount = destroyedCount + 1 end
+            lineScore = math.ceil(pointInputList[i].value * pointInputList[i].multiplier)
+            newScore = newScore + lineScore
+        end
+    end
+
+    if pilotCount == destroyedCount then scoreInput.value = 200 else scoreInput.value = newScore end
+    self.editInput({index=scoreInput.inputIndex, value=scoreInput.value})
+    updateSave()
+end
+
+function updateSquadImportInput(tableIndex, inputIndex, val, active)
+    if not active then
+        ref_componentsData.import_squad_input[tableIndex].value = val
+    end
+end
+
+--Import squadron
+function click_import_squadron(tableIndex)
+    local inputData = ref_componentsData.import_squad_input[tableIndex].value
+    local raithosCheck = string.find(inputData, 'raithos', 1)
+    local urlSwapPos = string.find(inputData, '?f=', 1)
+    local firstCharacter = string.sub(inputData, 1, 1)
+
+    if firstCharacter == '{' then
+        importSquadCallback(inputData, tableIndex, 'xws')
+    elseif (raithosCheck and urlSwapPos > 0) then
+        params = string.sub(inputData, urlSwapPos)
+        finalURL = 'https://squad2xws.herokuapp.com/yasb/xws/'..params
+        WebRequest.get(finalURL, function(a) importSquadCallback(a, tableIndex, 'yasb') end)
+    else
+        ref_componentsData.import_squad_input[tableIndex].value = 'Invalid data'
+        self.editInput({index=ref_componentsData.import_squad_input[tableIndex].inputIndex, value='Invalid data'})
+    end
+end
+
+function importSquadCallback(rawData, tableIndex, type)
+    local pointInputList = nil
+    local pilotInputList = nil
+    local shipCount = 0
+
+    if tableIndex == 1 then
+        pointInputList = ref_componentsData.point_input_p1
+        pilotInputList = ref_componentsData.pilot_input_p1
+    else
+        pointInputList = ref_componentsData.point_input_p2
+        pilotInputList = ref_componentsData.pilot_input_p2
+    end
+
+    local xwsData = ''
+    if type == 'yasb' then
+        xwsData = JSON.decode(rawData.text)
+    else
+        xwsData = JSON.decode(rawData)
+    end
+
+    local faction = xws_reference.factions[xwsData.faction]
+
+    for i, data in ipairs(xwsData.pilots) do
+        if i > 8 then break end
+        pilotInputList[i].pilotCode = data.id
+        pilotInputList[i].shipCode = data.ship
+        self.editInput({index=pilotInputList[i].inputIndex, value=data.id})
+
+        pointInputList[i].value = data.points
+        self.editInput({index=pointInputList[i].inputIndex, value=data.points})
+
+        shipCount = shipCount + 1
+    end
+
+    local shipsTemp = {}
+    local hash = {}
+    local unique_ships = {}
+
+    for i, data in ipairs(pilotInputList) do
+        table.insert(shipsTemp, data.shipCode)
+    end
+    for _,v in ipairs(shipsTemp) do
+       if (not hash[v]) then
+           unique_ships[#unique_ships+1] = v
+           hash[v] = true
+       end
+    end
+
+    local json_url = ""
+    for i, data in ipairs(unique_ships) do
+        if xws_reference.ships[data] then
+            json_url = "https://raw.githubusercontent.com/brunopugliese/xwing-data2/master/data/pilots/" .. faction .. "/" .. xws_reference.ships[data] .. ".json"
+            WebRequest.get(json_url, function(b) updatePilotNamesCallback(b, pilotInputList) end)
+        end
+    end
+
+    toggle_squad_details(tableIndex,'show',shipCount)
+end
+
+function updatePilotNamesCallback(webReturn, pilotInputList)
+    local jsonData = JSON.decode(webReturn.text)
+    for x, input in ipairs(pilotInputList) do
+        for y, pilot in ipairs(jsonData.pilots) do
+            if input.pilotCode == pilot.xws then
+                input.value = pilot.name
+                self.editInput({index=input.inputIndex, value=pilot.name})
+                break
+            end
+        end
+    end
+    updateSave()
+end
