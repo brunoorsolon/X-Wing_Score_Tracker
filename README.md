@@ -16,7 +16,7 @@ It currently accepts YASB URLs (https://raithos.github.io/) and raw XWS data for
 Related projects and web pages
 ----
 - The original script for this came from [this module](https://steamcommunity.com/sharedfiles/filedetails/?id=1124124634) by MrStump
-- [XWS](https://github.com/elistevens/xws-spec) is the X-wing Specification: 
-- [YASB](https://github.com/raithos/xwing) is [Yet Another Squad Builder](https://github.com/raithos/xwing): 
-- [X-Wing Data 2](https://github.com/guidokessels/xwing-data2)
+- [XWS](https://github.com/elistevens/xws-spec) is the X-wing Specification
+- [YASB](https://github.com/raithos/xwing) is [Yet Another Squad Builder](https://github.com/raithos/xwing)
+- [X-Wing Data 2](https://github.com/guidokessels/xwing-data2) JSON files are used for the pilot details
 - [squad2xws](https://github.com/zacharyp/squad2xws) is used for YASB URL conversion
