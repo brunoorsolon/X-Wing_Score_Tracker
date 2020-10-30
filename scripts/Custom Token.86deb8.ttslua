@@ -1,6 +1,6 @@
 disableSave = true
 
-module_version = '1.0.1'
+module_version = '1.1.0'
 
 buttonFontColor = {0,0,0}
 buttonColor = {1,1,1}
@@ -23,90 +23,7 @@ inputFontColor = {0,0,0,255}
 buttonScale = {0.1,0.1,0.1}
 scoreScale = {0.2,0.2,0.2}
 
-xws_reference = {
-    factions = {
-        rebelalliance = "rebel-alliance",
-        galacticempire = "galactic-empire",
-        scumandvillainy = "scum-and-villainy",
-        resistance = "resistance",
-        firstorder = "first-order",
-        galacticrepublic = "galactic-republic",
-        separatistalliance = "separatist-alliance"
-    },
-    ships = {
-        modifiedyt1300lightfreighter = "modified-yt-1300-light-freighter",
-        starviperclassattackplatform = "starviper-class-attack-platform",
-        scurrgh6bomber = "scurrg-h6-bomber",
-        yt2400lightfreighter = "yt-2400-light-freighter",
-        auzituckgunship = "auzituck-gunship",
-        kihraxzfighter = "kihraxz-fighter",
-        sheathipedeclassshuttle = "sheathipede-class-shuttle",
-        quadrijettransferspacetug = "quadrijet-transfer-spacetug",
-        firesprayclasspatrolcraft = "firespray-class-patrol-craft",
-        tielnfighter = "tie-ln-fighter",
-        btla4ywing = "btl-a4-y-wing",
-        tieadvancedx1 = "tie-advanced-x1",
-        alphaclassstarwing = "alpha-class-star-wing",
-        ut60duwing = "ut-60d-uwing",
-        tieskstriker = "tie-sk-striker",
-        asf01bwing = "a-sf-01-bwing",
-        tieddefender = "tie-d-defender",
-        tiesabomber = "tie-sa-bomber",
-        tiecapunisher = "tie-ca-punisher",
-        aggressorassaultfighter = "aggressor-assault-fighter",
-        g1astarfighter = "g-1a-starfighter",
-        vcx100lightfreighter = "vcx-100-light-freighter",
-        yv666lightfreighter = "yv-666-light-freighter",
-        tieadvancedv1 = "tie-advanced-v1",
-        lambdaclasst4ashuttle = "lambda-class-t-4a-shuttle",
-        tiephphantom = "tie-ph-phantom",
-        vt49decimator = "vt-49-decimator",
-        tieagaggressor = "tie-ag-aggressor",
-        btls8kwing = "btl-s8-k-wing",
-        arc170starfighter = "arc-170-starfighter",
-        attackshuttle = "attack-shuttle",
-        t65xwing = "t-65-x-wing",
-        hwk290lightfreighter = "hwk-290-light-freighter",
-        rz1awing = "rz-1-a-wing",
-        fangfighter = "fang-fighter",
-        z95af4headhunter = "z-95-af4-headhunter",
-        m12lkimogilafighter = "m12-l-kimogila-fighter",
-        ewing = "e-wing",
-        tieininterceptor = "tie-in-interceptor",
-        lancerclasspursuitcraft = "lancer-class-pursuit-craft",
-        tiereaper = "tie-reaper",
-        m3ainterceptor = "m3-a-interceptor",
-        jumpmaster5000 = "jumpmaster-5000",
-        customizedyt1300lightfreighter = "customized-yt-1300-light-freighter",
-        escapecraft = "escape-craft",
-        tiefofighter = "tie-fo-fighter",
-        tiesffighter = "tie-sf-fighter",
-        upsilonclassshuttle = "upsilon-classs-huttle",
-        tievnsilencer = "tie-vn-silencer",
-        t70xwing = "t-70-x-wing",
-        rz2awing = "rz-2-a-wing",
-        mg100starfortress = "mg-100-starfortress-sf-17",
-        modifiedtielnfighter = "modified-tie-ln-fighter",
-        scavengedyt1300 = "scavenged-yt-1300",
-        belbullab22starfighter = "belbullab-22-starfighter",
-        vultureclassdroidfighter = "vulture-class-droid-fighter",
-        sithinfiltrator = "sith-infiltrator",
-        delta7aethersprite = "delta-7-aethersprite",
-        v19torrentstarfighter = "v-19-torrent-starfighter",
-        nabooroyaln1starfighter = "naboo-royal-n-1-starfighter",
-        resistancetransport = "resistance-transport",
-        resistancetransportpod = "resistance-transport-pod",
-        hyenaclassdroidbomber = "hyena-class-droid-bomber",
-        nantexclassstarfighter = "nantex-class-starfighter",
-        btlbywing = "btl-b-y-wing",
-        tiebainterceptor = "tie-ba-interceptor",
-        fireball = "fireball",
-        xiclasslightshuttle = "xi-class-light-shuttle",
-        hmpdroidgunship = "hmp-droid-gunship",
-        laatigunship = "laat-i-gunship",
-        tierbheavy = "tie-rb-heavy"
-    }
-}
+xws_reference = nil
 
 componentsData = {
     score_counter = {
@@ -870,6 +787,13 @@ function onload(saved_data)
         ref_componentsData = componentsData
     end
 
+    local xwsdataURL = "https://raw.githubusercontent.com/brunopugliese/X-Wing_Score_Tracker/main/assets/xwsdata/index.json"
+    WebRequest.get(xwsdataURL, function(b) initObjectCallback(b) end)
+end
+
+function initObjectCallback(xwsRawData)
+    xws_reference = JSON.decode(xwsRawData.text)
+
     spawnedButtonCount = 0
     spawnedInputCount = 0
 
@@ -1436,7 +1360,7 @@ function importSquadCallback(rawData, tableIndex, type)
     local json_url = ""
     for i, data in ipairs(unique_ships) do
         if xws_reference.ships[data] then
-            json_url = "https://raw.githubusercontent.com/brunopugliese/xwing-data2/master/data/pilots/" .. faction .. "/" .. xws_reference.ships[data] .. ".json"
+            json_url = "https://raw.githubusercontent.com/brunopugliese/X-Wing_Score_Tracker/main/assets/xwsdata/" .. faction .. "/" .. xws_reference.ships[data] .. ".json"
             WebRequest.get(json_url, function(b) updatePilotNamesCallback(b, pilotInputList) end)
         end
     end
