@@ -1,6 +1,6 @@
 disableSave = true
 
-module_version = '1.1.0'
+module_version = '1.1.1'
 
 buttonFontColor = {0,0,0}
 buttonColor = {1,1,1}
@@ -1271,7 +1271,7 @@ function updateScore(player)
     end
 
     for i, data in ipairs(pointInputList) do
-        if pilotInputList[i].value != "" then
+        if pilotInputList[i].pilotCode != "" then
             pilotCount = pilotCount + 1
             if pointInputList[i].multiplier == 1 then destroyedCount = destroyedCount + 1 end
             lineScore = math.ceil(pointInputList[i].value * pointInputList[i].multiplier)
@@ -1334,6 +1334,7 @@ function importSquadCallback(rawData, tableIndex, type)
     for i, data in ipairs(xwsData.pilots) do
         if i > 8 then break end
         pilotInputList[i].pilotCode = data.id
+        pilotInputList[i].value = data.id
         pilotInputList[i].shipCode = data.ship
         self.editInput({index=pilotInputList[i].inputIndex, value=data.id})
 
@@ -1370,6 +1371,9 @@ end
 
 function updatePilotNamesCallback(webReturn, pilotInputList)
     local jsonData = JSON.decode(webReturn.text)
+    --JSON XWS not found
+    if jsonData == 404 then return end
+
     for x, input in ipairs(pilotInputList) do
         for y, pilot in ipairs(jsonData.pilots) do
             if input.pilotCode == pilot.xws then
