@@ -1,7 +1,7 @@
 # Tabletop Simulator - X-Wing 2.0 Score Tracker
 *Updated Oct 29, 2020 by brunopugliese*
 
-**Current version: 1.1.0**
+**Current version: 1.1.1**
 
 Overview
 ----
