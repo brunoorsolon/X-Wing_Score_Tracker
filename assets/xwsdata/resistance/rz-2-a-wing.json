@@ -182,6 +182,26 @@
       "ffg": 639,
       "artwork": "https://sb-cdn.fantasyflightgames.com/card_art/0930bea45803774f4b0d863b92a64328.jpg",
       "image": "https://sb-cdn.fantasyflightgames.com/card_images/en/1e861cadd2291ece7a9207cddcdcba39.png"
+    },
+    {
+      "name": "Merl Cobben",
+      "xws": "merlcobben"
+    },
+    {
+      "name": "Wrobie Tyce",
+      "xws": "wrobietyce"
+    },
+    {
+      "name": "Suralinda Javos",
+      "xws": "suralindajavos"
+    },
+    {
+      "name": "Ronith Blario",
+      "xws": "ronithblario"
+    },
+    {
+      "name": "Seftin Vanik",
+      "xws": "seftinvanik"
     }
   ]
 }

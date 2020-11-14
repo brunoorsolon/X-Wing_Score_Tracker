@@ -307,6 +307,22 @@
       ],
       "ffg": 422,
       "hyperspace": true
+    },
+    {
+      "name": "C'ai Threnalli",
+      "xws": "caithrenalli"
+    },
+    {
+      "name": "Nimi Chireen",
+      "xws": "nimichireen"
+    },
+    {
+      "name": "Temmin Wexley (HoH)",
+      "xws": "temminwexley-swz68"
+    },
+    {
+      "name": "Poe Dameron (HoH)",
+      "xws": "poedameron-swz68"
     }
   ]
 }

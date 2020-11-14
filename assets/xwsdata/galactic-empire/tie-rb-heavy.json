@@ -52,6 +52,20 @@
         "text": "You can rotate your [Single Turret Arc] indicator only to your [Front Arc] or [Rear Arc]. You must treat the [Front Arc] requirement of your equipped [Cannon] upgrades as [Single Turret Arc]."
       },
       "hyperspace": false
-    }
+    },
+    {
+      "name": "Carida Academy Cadet",
+      "xws": "caridaacademycadet"
+
+    },
+    {
+      "name": "Onyx Squadron Sentry",
+      "xws": "onyxsquadronsentry"
+
+    },
+    {
+      "name": "\"Rampage\"",
+      "xws": "rampage"
+    }    
   ]
 }
