@@ -1,6 +1,6 @@
 disableSave = true
 
-module_version = '1.1.1'
+module_version = '1.1.2'
 
 buttonFontColor = {0,0,0}
 buttonColor = {1,1,1}
@@ -1279,7 +1279,7 @@ function updateScore(player)
         end
     end
 
-    if pilotCount == destroyedCount then scoreInput.value = 200 else scoreInput.value = newScore end
+    scoreInput.value = newScore
     self.editInput({index=scoreInput.inputIndex, value=scoreInput.value})
     updateSave()
 end
