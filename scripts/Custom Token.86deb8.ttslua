@@ -1,27 +1,32 @@
-disableSave = true
+disableSave = false
 
-module_version = '1.1.2'
+module_version = '1.2'
 
-buttonFontColor = {0,0,0}
-buttonColor = {1,1,1}
-greenButton = {148/255, 255/255, 176/255}
-yellowButton = {246/255, 255/255, 176/255}
-redButton = {255/255, 118/255, 97/255}
+buttonFontColor = {0/255, 0/255, 0/255, 255/255}
+buttonColor = {255/255, 255/255,255/255, 255/255}
+greenButton = {148/255, 255/255, 176/255, 255/255}
+yellowButton = {246/255, 255/255, 176/255, 255/255}
+redButton = {255/255, 118/255, 97/255, 255/255}
+backgroundButtonColor = {224/255, 215/255, 209/255, 255/255}
 
-shipColor1   = {255/255, 255/255, 255/255} -- white
-shipColor2   = {255/255, 255/255, 54/255} -- yellow
-shipColor3   = {33/255, 255/255, 91/255} -- green
-shipColor4   = {255/255, 69/255, 41/255} -- red
-shipColor5   = {94/255, 167/255, 255/255} -- bue
-shipColor6   = {255/255, 54/255, 242/255} -- pink
-shipColor7   = {255/255, 187/255, 0/255} -- orange
-shipColor8   = {128/255, 0/255, 255/255} -- purple
+shipColor1   = {255/255, 255/255, 255/255, 255/255} -- white
+shipColor2   = {255/255, 255/255, 54/255, 255/255} -- yellow
+shipColor3   = {33/255, 255/255, 91/255, 255/255} -- green
+shipColor4   = {255/255, 69/255, 41/255, 255/255} -- red
+shipColor5   = {94/255, 167/255, 255/255, 255/255} -- bue
+shipColor6   = {255/255, 54/255, 242/255, 255/255} -- pink
+shipColor7   = {255/255, 187/255, 0/255, 255/255} -- orange
+shipColor8   = {128/255, 0/255, 255/255, 255/255} -- purple
+shipColor9   = {40/255, 44/255, 52/255, 255/255} -- black
 
-inputColor = {1,1,1,0}
-inputFontColor = {0,0,0,255}
+inputColor = {1, 1, 1, 0}
+inputFontColor = {0, 0, 0, 255}
 
 buttonScale = {0.1,0.1,0.1}
 scoreScale = {0.2,0.2,0.2}
+
+colorPickerRow_p1 = 1
+colorPickerRow_p2 = 1
 
 xws_reference = nil
 
@@ -768,6 +773,190 @@ componentsData = {
             buttonIndex = 0
         },
     },
+    color_picker_button_p1 = {
+        -- COLOR 1
+        {
+            pos         = {-1.650,0.0,-0.305},
+            color       = shipColor1,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        -- COLOR 2
+        {
+            pos         = {-1.540,0.0,-0.305},
+            color       = shipColor2,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 2,
+            buttonIndex = 0
+        },
+        -- COLOR 3
+        {
+            pos         = {-1.430,0.0,-0.305},
+            color       = shipColor3,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 3,
+            buttonIndex = 0
+        },
+        -- COLOR 4
+        {
+            pos         = {-1.320,0.0,-0.305},
+            color       = shipColor4,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 4,
+            buttonIndex = 0
+        },
+        -- COLOR 5
+        {
+            pos         = {-1.210,0.0,-0.305},
+            color       = shipColor5,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 5,
+            buttonIndex = 0
+        },
+        -- COLOR 6
+        {
+            pos         = {-1.100,0.0,-0.305},
+            color       = shipColor6,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 6,
+            buttonIndex = 0
+        },
+        -- COLOR 7
+        {
+            pos         = {-0.990,0.0,-0.305},
+            color       = shipColor7,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 7,
+            buttonIndex = 0
+        },
+        -- COLOR 8
+        {
+            pos         = {-0.880,0.0,-0.305},
+            color       = shipColor8,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 8,
+            buttonIndex = 0
+        },
+        -- COLOR 9
+        {
+            pos         = {-0.770,0.0,-0.305},
+            color       = shipColor9,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 8,
+            buttonIndex = 0
+        },
+    },
+    color_picker_button_p2 = {
+        -- COLOR 1
+        {
+            pos         = {0.220,0.0,-0.305},
+            color       = shipColor1,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 1,
+            buttonIndex = 0
+        },
+        -- COLOR 2
+        {
+            pos         = {0.330,0.0,-0.305},
+            color       = shipColor2,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 2,
+            buttonIndex = 0
+        },
+        -- COLOR 3
+        {
+            pos         = {0.440,0.0,-0.305},
+            color       = shipColor3,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 3,
+            buttonIndex = 0
+        },
+        -- COLOR 4
+        {
+            pos         = {0.550,0.0,-0.305},
+            color       = shipColor4,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 4,
+            buttonIndex = 0
+        },
+        -- COLOR 5
+        {
+            pos         = {0.660,0.0,-0.305},
+            color       = shipColor5,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 5,
+            buttonIndex = 0
+        },
+        -- COLOR 6
+        {
+            pos         = {0.770,0.0,-0.305},
+            color       = shipColor6,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 6,
+            buttonIndex = 0
+        },
+        -- COLOR 7
+        {
+            pos         = {0.880,0.0,-0.305},
+            color       = shipColor7,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 7,
+            buttonIndex = 0
+        },
+        -- COLOR 8
+        {
+            pos         = {0.990,0.0,-0.305},
+            color       = shipColor8,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 8,
+            buttonIndex = 0
+        },
+        -- COLOR 9
+        {
+            pos         = {1.100,0.0,-0.305},
+            color       = shipColor9,
+            size        = 100,
+            height      = 100,
+            width       = 100,
+            shipColorId = 8,
+            buttonIndex = 0
+        },
+    }
 }
 
 --Save function
@@ -816,6 +1005,9 @@ function initObjectCallback(xwsRawData)
     createShipColorButton("p1")
     createShipColorButton("p2")
 
+    createColorPicker("p1")
+    createColorPicker("p2")
+
     local funcName = "moduleVersion"
     local func = function(_,_,val,sel) click_none() end
     self.setVar(funcName, func)
@@ -837,6 +1029,33 @@ function initObjectCallback(xwsRawData)
     })
 
     spawnedInputCount = spawnedInputCount + 1
+end
+
+function createColorPicker(player)
+
+    local colorPickerButtonList = nil
+    if player == 'p1' then
+        colorPickerButtonList = ref_componentsData.color_picker_button_p1
+    else
+        colorPickerButtonList = ref_componentsData.color_picker_button_p2
+    end
+
+    --BUTTONS
+    for i, data in ipairs(colorPickerButtonList) do
+        local funcName = "colorPickerButton"..player..i
+        local func = function() click_change_color(player, data.color) end
+
+        self.setVar(funcName, func)
+        data.buttonIndex = spawnedButtonCount
+        self.createButton({
+            label='', click_function=funcName, function_owner=self,
+            position={data.pos[1], data.pos[2], data.pos[3]}, height=data.height, width=data.width,
+            font_size=data.size, scale={0.5,0.5,0.5},
+            color=data.color, font_color=buttonFontColor, hover_color=data.color, press_color=data.color
+        })
+
+        spawnedButtonCount = spawnedButtonCount + 1
+    end
 end
 
 --Makes score counters
@@ -1067,7 +1286,7 @@ function createShipColorButton(player)
     end
     for i, data in ipairs(components) do
         local funcName = "changeColor"..player..i
-        local func = function() click_change_color(i, player) end
+        local func = function() toggle_color_picker(i, player, 'show') end
         self.setVar(funcName, func)
         data.buttonIndex = spawnedButtonCount
         self.createButton({
@@ -1121,6 +1340,7 @@ function toggle_squad_details(player,action,shipCount)
         shipColorButtonList = ref_componentsData.ship_color_button_p1
         pointInputList = ref_componentsData.point_input_p1
         pilotInputList = ref_componentsData.pilot_input_p1
+        pilotTesteInputList = ref_componentsData.pilot_teste_p1
     else
         statusButtonList = ref_componentsData.status_button_p2
         shipColorButtonList = ref_componentsData.ship_color_button_p2
@@ -1180,42 +1400,80 @@ function toggle_squad_details(player,action,shipCount)
     self.editButton({index=clearSquadTextButton.buttonIndex, position={clearSquadTextButton.pos[1]+0.110,importPos,clearSquadTextButton.pos[3]}})
 end
 
---Chnage ship identifier color
-function click_change_color(tableIndex, player)
+--Change ship identifier color
+function click_change_color(player, newColor)
     local buttonList = nil
+    local colorPickerRow = nil
 
     if player == 'p1' then
         buttonList = ref_componentsData.ship_color_button_p1
+        colorPickerRow = colorPickerRow_p1
     else
         buttonList = ref_componentsData.ship_color_button_p2
+        colorPickerRow = colorPickerRow_p2
     end
 
-    local newShipColorId = buttonList[tableIndex].shipColorId + 1
-    if newShipColorId > 8 then newShipColorId = 1 end
-    local newColorCode = {0,0,0}
+    self.editButton({index=buttonList[colorPickerRow].buttonIndex, color=newColor, hover_color=newColor, press_color=newColor})
 
-    if newShipColorId == 1 then
-        newColorCode = shipColor1
-    elseif newShipColorId == 2 then
-        newColorCode = shipColor2
-    elseif newShipColorId == 3 then
-        newColorCode = shipColor3
-    elseif newShipColorId == 4 then
-        newColorCode = shipColor4
-    elseif newShipColorId == 5 then
-        newColorCode = shipColor5
-    elseif newShipColorId == 6 then
-        newColorCode = shipColor6
-    elseif newShipColorId == 7 then
-        newColorCode = shipColor7
-    elseif newShipColorId == 8 then
-        newColorCode = shipColor8
-    end
+    toggle_color_picker(colorPickerRow, player, 'hide')
 
-    buttonList[tableIndex].shipColorId = newShipColorId
-    self.editButton({index=buttonList[tableIndex].buttonIndex, color=newColorCode, hover_color=newColorCode, press_color=newColorCode})
     updateSave()
 end
+
+--Open ship identifier color picker
+function toggle_color_picker(tableIndex, player, action)
+    local colorPickerButtonList = nil
+    local pilotInputList = nil
+    local shipColorButton = nil
+
+    if player == 'p1' then
+        colorPickerButtonList = ref_componentsData.color_picker_button_p1
+        pilotInputList = ref_componentsData.pilot_input_p1
+        shipColorButton = ref_componentsData.ship_color_button_p1
+    else
+        colorPickerButtonList = ref_componentsData.color_picker_button_p2
+        pilotInputList = ref_componentsData.pilot_input_p2
+        shipColorButton = ref_componentsData.ship_color_button_p2
+    end
+
+    local buttonVerticalPos = shipColorButton[tableIndex].pos[3]
+
+    local colorPickerButtonPos = 0.0
+    local pilotInputPos = 0.0
+
+    if action == 'hide' then
+        --HIDE COLOR PICKER AND SHOW PILOT INPUT
+        colorPickerButtonPos = 0.0
+        pilotInputPos = 0.1
+    else
+        --SHOW COLOR PICKER AND HIDE PILOT INPUT
+        colorPickerButtonPos = 0.1
+        pilotInputPos = 0.0
+
+        -- updates row id for color picker
+        if player == 'p1' then
+            lastColorPickerRow = colorPickerRow_p1
+            colorPickerRow_p1 = tableIndex
+        else
+            lastColorPickerRow = colorPickerRow_p2
+            colorPickerRow_p2 = tableIndex
+        end
+
+        -- SHOW PREVIOUS INPUT // just in case someone tries to change multiple colors without selecting a coor for the line first
+        self.editInput({index=pilotInputList[lastColorPickerRow].inputIndex, position={pilotInputList[lastColorPickerRow].pos[1],0.1,pilotInputList[lastColorPickerRow].pos[3]}})
+    end
+
+
+    -- color picker
+    for i, buttonData in ipairs(colorPickerButtonList) do
+        self.editButton({index=buttonData.buttonIndex, position={buttonData.pos[1],colorPickerButtonPos,buttonVerticalPos}})
+    end
+    -- pilot input
+    self.editInput({index=pilotInputList[tableIndex].inputIndex, position={pilotInputList[tableIndex].pos[1],pilotInputPos,pilotInputList[tableIndex].pos[3]}})
+
+    updateSave()
+end
+
 
 --Update pilot status and total score
 function click_change_status(tableIndex, player)
