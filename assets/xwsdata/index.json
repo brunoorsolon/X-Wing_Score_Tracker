@@ -13,8 +13,10 @@
     "tiefofighter" : "tie-fo-fighter",
     "tiesffighter" : "tie-sf-fighter",
     "tievnsilencer" : "tie-vn-silencer",
-    "upsilonclassshuttle" : "upsilon-classs-huttle",
+    "upsilonclassshuttle" : "upsilon-class-command-shuttle",
     "xiclasslightshuttle" : "xi-class-light-shuttle",
+    "tiesebomber" : "tie-se-bomber",
+    "tiewiwhispermodifiedinterceptor" : "tie-wi-whisper-modified-interceptor",
     
     "alphaclassstarwing" : "alpha-class-star-wing",
     "lambdaclasst4ashuttle" : "lambda-class-t-4a-shuttle",
@@ -32,9 +34,12 @@
     "tieskstriker" : "tie-sk-striker",
     "vt49decimator" : "vt-49-decimator",
 
+    "gauntletfighter" : "gauntlet-fighter",
+
     "arc170starfighter" : "arc-170-starfighter",
     "btlbywing" : "btl-b-y-wing",
     "delta7aethersprite" : "delta-7-aethersprite",
+    "delta7baethersprite" : "delta-7b-aethersprite",
     "eta2actis" : "eta-2-actis",
     "laatigunship" : "laat-i-gunship",
     "nabooroyaln1starfighter" : "naboo-royal-n-1-starfighter",
@@ -64,6 +69,7 @@
     "rz2awing" : "rz-2-a-wing",
     "scavengedyt1300" : "scavenged-yt-1300",
     "t70xwing" : "t-70-x-wing",
+    "btanr2ywing" : "bta-nr2-y-wing",
     
     "aggressorassaultfighter" : "aggressor-assault-fighter",
     "customizedyt1300lightfreighter" : "customized-yt-1300-light-freighter",
@@ -88,6 +94,14 @@
     "hyenaclassdroidbomber" : "hyena-class-droid-bomber",
     "nantexclassstarfighter" : "nantex-class-starfighter",
     "sithinfiltrator" : "sith-infiltrator",
-    "vultureclassdroidfighter" : "vulture-class-droid-fighter"
+    "vultureclassdroidfighter" : "vulture-class-droid-fighter",
+
+    "gozanticlasscruiser" : "gozanti-class-cruiser",
+    "raiderclasscorvette" : "raider-class-corvette",
+    "cr90corelliancorvette" : "cr90-corellian-corvette",
+    "gr75mediumtransport" : "gr-75-medium-transport",
+    "croccruiser" : "c-roc-cruiser",
+    "tridentclassassaultship" : "trident-class-assault-ship"
+
   }
 }
