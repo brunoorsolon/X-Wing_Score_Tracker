@@ -1,6 +1,6 @@
 disableSave = false
 
-module_version = '1.2'
+module_version = '1.3'
 
 buttonFontColor = {0/255, 0/255, 0/255, 255/255}
 buttonColor = {255/255, 255/255,255/255, 255/255}
@@ -41,6 +41,8 @@ componentsData = {
             alignment  = 3,
             label      = '0',
             value      = '0',
+            ship_value = 0,
+            obj_value  = 0,
             inputIndex = 0
         },
         --PLAYER 2
@@ -52,6 +54,8 @@ componentsData = {
             alignment  = 3,
             label      = '0',
             value      = '0',
+            ship_value = 0,
+            obj_value  = 0,
             inputIndex = 0
         },
         --End of score counters
@@ -73,8 +77,48 @@ componentsData = {
             buttonIndex = 0
         },
     },
+    score_button_p1 = {
+        --SCORE BUTTONS
+        --PLAYER 1
+        {
+            pos         = {-0.400,0.1,-1.050},
+            size        = 700,
+            value       = '+',
+            color       = greenButton,
+            action      = 'increase',
+            buttonIndex = 0
+        },
+        {
+            pos         = {-0.500,0.1,-1.050},
+            size        = 700,
+            value       = '-',
+            color       = redButton,
+            action      = 'decrease',
+            buttonIndex = 0
+        },
+    },
+    score_button_p2 = {
+        --SCORE BUTTONS
+        --PLAYER 2
+        {
+            pos         = {0.300,0.1,-1.050},
+            size        = 700,
+            value       = '+',
+            color       = greenButton,
+            action      = 'increase',
+            buttonIndex = 0
+        },
+        {
+            pos         = {0.200,0.1,-1.050},
+            size        = 700,
+            value       = '-',
+            color       = redButton,
+            action      = 'decrease',
+            buttonIndex = 0
+        },
+    },
     clear_squad_button = {
-        --IMPORT SQUAD BUTTONS
+        --CLEAR SQUAD BUTTONS
         --PLAYER 1
         {
             pos         = {-0.200,0.1,-0.550},
@@ -992,6 +1036,8 @@ function initObjectCallback(xwsRawData)
     createClearSquadButton()
 
     createScoreCounter()
+    createScoreButton("p1")
+    createScoreButton("p2")
 
     createPilotInput("p1")
     createPointInput("p1")
@@ -1227,7 +1273,7 @@ function createResetSquadButton()
     end
 end
 
---Makes import squad buttons
+--Makes clear squad buttons
 function createClearSquadButton()
     for i, data in ipairs(ref_componentsData.clear_squad_button) do
         local funcName = "clearSquadronInputText"..i
@@ -1244,6 +1290,43 @@ function createClearSquadButton()
             font_size=size, scale=buttonScale,
             color={255/255, 69/255, 41/255}, hover_color={255/255, 69/255, 41/255}, press_color={255/255, 69/255, 41/255}, font_color={1,1,1},
             tooltip='Clear text'
+        })
+        spawnedButtonCount = spawnedButtonCount + 1
+    end
+end
+
+--Makes score buttons
+function createScoreButton(player)
+    local components = nil
+    if player == 'p1' then
+        components = ref_componentsData.score_button_p1
+    else
+        components = ref_componentsData.score_button_p2
+    end
+    for i, data in ipairs(components) do
+        local funcName = nil
+        local tt = nil
+        if data.action == 'increase' then
+            funcName = "scoreIncreaseInputText"..player..i
+            tt = 'Increase Score'
+        else
+            funcName = "scoreDecreaseInputText"..player..i
+            tt = 'Decrease Score'
+        end
+
+        local func = function() click_change_score_button(player, data.action) end
+        self.setVar(funcName, func)
+        local label = data.value
+        local offsetDistance = (data.size/2 + data.size/4) * (buttonScale[1] * 0.002)
+        local pos = {data.pos[1] + offsetDistance, data.pos[2], data.pos[3]}
+        local size = data.size / 2
+        data.buttonIndex = spawnedButtonCount
+        self.createButton({
+            label=label, click_function=funcName, function_owner=self,
+            position=pos, height=size*1.3, width=size*1.3,
+            font_size=size, scale=buttonScale,
+            color=data.color, hover_color=data.color, press_color=data.color, font_color={1,1,1},
+            tooltip=tt
         })
         spawnedButtonCount = spawnedButtonCount + 1
     end
@@ -1388,8 +1471,10 @@ function toggle_squad_details(player,action,shipCount)
     end
 
     --player score input
-    scoreInput.value = 0
-    self.editInput({index=scoreInput.inputIndex, value=0})
+    scoreInput.value = scoreInput.obj_value
+    self.editInput({index=scoreInput.inputIndex, value=scoreInput.value})
+    scoreInput.ship_value = 0
+    self.editInput({index=scoreInput.inputIndex, ship_value=scoreInput.ship_value})
     --import squad button
     self.editButton({index=importSquadButton.buttonIndex, position={importSquadButton.pos[1]+0.110,importPos,importSquadButton.pos[3]}})
     --import squadron input
@@ -1459,7 +1544,7 @@ function toggle_color_picker(tableIndex, player, action)
             colorPickerRow_p2 = tableIndex
         end
 
-        -- SHOW PREVIOUS INPUT // just in case someone tries to change multiple colors without selecting a coor for the line first
+        -- SHOW PREVIOUS INPUT // just in case someone tries to change multiple colors without selecting a color for the line first
         self.editInput({index=pilotInputList[lastColorPickerRow].inputIndex, position={pilotInputList[lastColorPickerRow].pos[1],0.1,pilotInputList[lastColorPickerRow].pos[3]}})
     end
 
@@ -1473,7 +1558,6 @@ function toggle_color_picker(tableIndex, player, action)
 
     updateSave()
 end
-
 
 --Update pilot status and total score
 function click_change_status(tableIndex, player)
@@ -1506,12 +1590,13 @@ function click_change_status(tableIndex, player)
     updateSave()
 end
 
---Uptade total score
+--Update total score
 function updateScore(player)
     local buttonList = nil
     local pointInputList = nil
     local pilotInputList = nil
     local scoreInput = nil
+    local currentObjValue = 0
     local newScore = 0
     local pilotCount = 0
     local destroyedCount = 0
@@ -1537,8 +1622,41 @@ function updateScore(player)
         end
     end
 
-    scoreInput.value = newScore
+    currentObjValue = scoreInput.obj_value
+    scoreInput.value = newScore + currentObjValue
+    scoreInput.ship_value = newScore
     self.editInput({index=scoreInput.inputIndex, value=scoreInput.value})
+    self.editInput({index=scoreInput.inputIndex, ship_value=scoreInput.ship_value})
+    updateSave()
+end
+
+--Manually update scores (objectives)
+function click_change_score_button(player, action)
+    local scoreInput = nil
+    local currentShipValue = 0
+    local currentObjValue = 0
+
+    if player == 'p1' then
+        scoreInput = ref_componentsData.score_counter[1]
+    else
+        scoreInput = ref_componentsData.score_counter[2]
+    end
+
+    currentShipValue = scoreInput.ship_value
+    if action == 'increase' then
+        currentObjValue = scoreInput.obj_value + 1
+    else
+        currentObjValue = scoreInput.obj_value - 1
+    end
+
+    if currentObjValue < 0 then
+        currentObjValue = 0
+    end
+
+    scoreInput.value = currentShipValue + currentObjValue
+    scoreInput.obj_value = currentObjValue
+    self.editInput({index=scoreInput.inputIndex, value=scoreInput.value})
+    self.editInput({index=scoreInput.inputIndex, obj_value=scoreInput.obj_value})
     updateSave()
 end
 
@@ -1551,13 +1669,13 @@ end
 --Import squadron
 function click_import_squadron(tableIndex)
     local inputData = ref_componentsData.import_squad_input[tableIndex].value
-    local raithosCheck = string.find(inputData, 'raithos', 1)
+    local yasbCheck = string.find(inputData, 'yasb.app', 1)
     local urlSwapPos = string.find(inputData, '?f=', 1)
     local firstCharacter = string.sub(inputData, 1, 1)
 
     if firstCharacter == '{' then
         importSquadCallback(inputData, tableIndex, 'xws')
-    elseif (raithosCheck and urlSwapPos > 0) then
+    elseif (yasbCheck and urlSwapPos > 0) then
         params = string.sub(inputData, urlSwapPos)
         finalURL = 'https://squad2xws.herokuapp.com/yasb/xws/'..params
         WebRequest.get(finalURL, function(a) importSquadCallback(a, tableIndex, 'yasb') end)

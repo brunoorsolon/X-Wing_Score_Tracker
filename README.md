@@ -1,7 +1,7 @@
 # Tabletop Simulator - X-Wing 2.0 Score Tracker
-*Updated Jul 11, 2021 by brunopugliese*
+*Updated Feb 25, 2022 by brunopugliese*
 
-**Current version: 1.2**
+**Current version: 1.3**
 
 Overview
 ----
@@ -10,7 +10,7 @@ To use this, subscribe to the module at the [Steam Workshop page](https://steamc
 
 Then open a new Single Player TTS game and save the score tracker as your own object. After that you wil be able to drag it into any X-Wing game and use it as you see fit.
 
-It currently accepts YASB URLs (https://raithos.github.io/) and raw XWS data for the squad importing.
+It currently accepts YASB URLs (https://yasb.app/) and raw XWS data for the squad importing.
 
 
 Related projects and web pages
