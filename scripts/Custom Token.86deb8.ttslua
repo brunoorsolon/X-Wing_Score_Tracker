@@ -1,6 +1,6 @@
 disableSave = false
 
-module_version = '1.3.1'
+module_version = '1.5'
 
 buttonFontColor = {0/255, 0/255, 0/255, 255/255}
 buttonColor = {255/255, 255/255,255/255, 255/255}
@@ -29,6 +29,17 @@ colorPickerRow_p1 = 1
 colorPickerRow_p2 = 1
 
 xws_reference = nil
+
+squadReference = {
+    --PLAYER 1
+    {
+        url = ''
+    },
+    --PLAYER 2
+    {
+        url = ''
+    },
+}
 
 componentsData = {
     score_counter = {
@@ -138,15 +149,15 @@ componentsData = {
         --IMPORT SQUAD BUTTONS
         --PLAYER 1
         {
-            pos         = {-1.070,0.0,-0.575},
-            size        = 700,
+            pos         = {-1.225,0.0,-0.560},
+            size        = 500,
             value       = 'Reset Squadron',
             buttonIndex = 0
         },
         --PLAYER 2
         {
-            pos         = {0.800,0.0,-0.575},
-            size        = 700,
+            pos         = {0.645,0.0,-0.560},
+            size        = 500,
             value       = 'Reset Squadron',
             buttonIndex = 0
         },
@@ -1217,7 +1228,7 @@ function createImportSquadButton()
             label=label, click_function=funcName, function_owner=self,
             position=pos, height=size*1.3, width=size*8,
             font_size=size, scale=buttonScale,
-            color=buttonColor, font_color=buttonFontColor
+            color=greenButton, hover_color=greenButton, press_color=greenButton, font_color={1,1,1}
         })
         spawnedButtonCount = spawnedButtonCount + 1
     end
@@ -1252,7 +1263,7 @@ function createImportSquadInput()
     end
 end
 
---Makes import squad buttons
+--Makes Reset squad buttons
 function createResetSquadButton()
     for i, data in ipairs(ref_componentsData.reset_squad_button) do
         local funcName = "resetSquadron"..i
@@ -1267,7 +1278,7 @@ function createResetSquadButton()
             label=label, click_function=funcName, function_owner=self,
             position=pos, height=size*1.3, width=size*8,
             font_size=size, scale=buttonScale,
-            color=buttonColor, font_color=buttonFontColor
+            color=redButton, hover_color=redButton, press_color=redButton, font_color={1,1,1}
         })
         spawnedButtonCount = spawnedButtonCount + 1
     end
@@ -1388,6 +1399,7 @@ function click_none() end
 
 function click_reset_squadron(tableIndex)
     toggle_squad_details(tableIndex,'hide',8)
+    updateSquadURL('', tableIndex)
 end
 
 function click_clear_squad_input_text(tableIndex)
@@ -1414,6 +1426,7 @@ function toggle_squad_details(player,action,shipCount)
     local clearSquadTextButton = ref_componentsData.clear_squad_button[player]
 
     local detailsPos = 0.0
+    local exportPos = 0.0
     local importPos = 0.0
     local importWitdh = 0
     local importHeight = 0
@@ -1423,13 +1436,11 @@ function toggle_squad_details(player,action,shipCount)
         shipColorButtonList = ref_componentsData.ship_color_button_p1
         pointInputList = ref_componentsData.point_input_p1
         pilotInputList = ref_componentsData.pilot_input_p1
-        pilotTesteInputList = ref_componentsData.pilot_teste_p1
     else
         statusButtonList = ref_componentsData.status_button_p2
         shipColorButtonList = ref_componentsData.ship_color_button_p2
         pointInputList = ref_componentsData.point_input_p2
         pilotInputList = ref_componentsData.pilot_input_p2
-
     end
 
     if action == 'hide' then
@@ -1438,6 +1449,7 @@ function toggle_squad_details(player,action,shipCount)
         importHeight = 6700
     else
         detailsPos = 0.1
+        exportPos = 0.1
     end
 
 
@@ -1678,6 +1690,7 @@ function click_import_squadron(tableIndex)
     elseif (yasbCheck and urlSwapPos > 0) then
         params = string.sub(inputData, urlSwapPos)
         finalURL = 'https://squad2xws.herokuapp.com/yasb/xws/'..params
+        updateSquadURL(inputData, tableIndex)
         WebRequest.get(finalURL, function(a) importSquadCallback(a, tableIndex, 'yasb') end)
     else
         ref_componentsData.import_squad_input[tableIndex].value = 'Invalid data'
@@ -1699,10 +1712,28 @@ function importSquadCallback(rawData, tableIndex, type)
     end
 
     local xwsData = ''
+    local xwsRaw = ''
     if type == 'yasb' then
         xwsData = JSON.decode(rawData.text)
+        xwsRaw = rawData.text
     else
         xwsData = JSON.decode(rawData)
+        xwsRaw = rawData
+
+        if xwsData.vendor.yasb then
+            updateSquadURL(xwsData.vendor.yasb.link, tableIndex)
+        else
+            local headers = {
+                ["Content-Type"] = "application/json",
+                Accept = "application/json",
+            }
+            WebRequest.custom('https://squad2xws.herokuapp.com/yasb/reverse/', "POST", true, xwsRaw, headers,
+            function(resp)
+                local jsonData = JSON.decode(resp.text)
+                if jsonData == 404 then return end
+                updateSquadURL(jsonData.url, tableIndex)
+            end)
+        end
     end
 
     local faction = xws_reference.factions[xwsData.faction]
@@ -1759,5 +1790,15 @@ function updatePilotNamesCallback(webReturn, pilotInputList)
             end
         end
     end
+    updateSave()
+end
+
+-- Export Squad Callback
+function updateSquadURL(url, player)
+
+    squadReference[player].url = url
+
+    self.setDescription("Player 1 squad:\n\n"..squadReference[1].url.."\n\nPlayer2 squad:\n\n"..squadReference[2].url)
+
     updateSave()
 end

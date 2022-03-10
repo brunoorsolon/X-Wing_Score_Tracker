@@ -85,7 +85,7 @@
       "caption": "Serene Mentor",
       "initiative": 5,
       "limited": 1,
-      "xws": "plokoon-delta7baethersprite",
+      "xws": "plokoondelta7b",
       "ability": "At the start of the Engagement Phase, you may spend 1 [Force] and choose another friendly ship at range 0-2. If you do, you may transfer 1 green token to it or transfer one orange token from it to yourself.",
       "force": { "value": 2, "recovers": 1, "side": ["light"] },
       "standard": true,
@@ -108,7 +108,7 @@
       "caption": "Prophetic Pilot",
       "initiative": 4,
       "limited": 1,
-      "xws": "saeseetiin-delta7baethersprite",
+      "xws": "saeseetiindelta7b",
       "ability": "After a friendly ship at range 0-2 reveals its dial, you may spend 1 [Force]. If you do, set its dial to another maneuver of the same speed and difficulty.",
       "force": { "value": 2, "recovers": 1, "side": ["light"] },
       "standard": false,
@@ -125,7 +125,7 @@
       "caption": "Harsh Traditionalist",
       "initiative": 4,
       "limited": 1,
-      "xws": "macewindu-delta7baethersprite",
+      "xws": "macewindudelta7b",
       "ability": "After you fully execute a red maneuver, recover 1 [Force].",
       "force": { "value": 3, "recovers": 1, "side": ["light"] },
       "standard": true,
@@ -142,7 +142,7 @@
       "caption": "Hero of the Republic",
       "initiative": 6,
       "limited": 1,
-      "xws": "anakinskywalker-delta7baethersprite",
+      "xws": "anakinskywalkerdelta7b",
       "ability": "After you fully execute a maneuver, if there is an enemy ship in your [Front Arc] at range 0-1 or in your [Bullseye Arc], you may spend 1 [Force] to remove 1 stress token.",
       "force": { "value": 3, "recovers": 1, "side": ["light"] },
       "standard": true,
@@ -182,7 +182,7 @@
       "caption": "Conflicted Padawan",
       "initiative": 4,
       "limited": 1,
-      "xws": "barrissoffee-delta7baethersprite",
+      "xws": "barrissoffeedelta7b",
       "ability": "While a friendly ship at range 0-2 performs an attack, if the defender is in its [Bullseye Arc], you may spend 1 [Force] to change 1 [Focus] result to a [Hit] result or 1 [Hit] result to a [Critical Hit] result.",
       "force": { "value": 1, "recovers": 1, "side": ["light"] },
       "standard": true,
@@ -199,7 +199,7 @@
       "caption": "Wise Protector",
       "initiative": 4,
       "limited": 1,
-      "xws": "luminaraunduli-delta7baethersprite",
+      "xws": "luminaraundulidelta7b",
       "ability": "While a friendly ship at range 0-2 defends, if it is not in the attacker's [Bullseye Arc], you may spend 1 [Force]. If you do, change 1 [Critical Hit] result to a [Hit] result or 1 [Hit] result to a [Focus] result.",
       "force": { "value": 2, "recovers": 1, "side": ["light"] },
       "standard": true,
@@ -210,6 +210,42 @@
       "keywords": ["Jedi", "Light Side"],
       "loadout": 7,
       "extended": true
+    },
+    {
+      "name": "Jedi Knight",
+      "xws": "jediknight-delta7baethersprite"
+    },
+    {
+      "name": "Obi-Wan Kenobi",
+      "xws": "obiwankenobi-delta7baethersprite"
+    },
+    {
+      "name": "Plo Koon",
+      "xws": "plokoon-delta7baethersprite"
+    },
+    {
+      "name": "Saesee Tiin",
+      "xws": "saeseetiin-delta7baethersprite"
+    },
+    {
+      "name": "Mace Windu",
+      "xws": "macewindu-delta7baethersprite"
+    },
+    {
+      "name": "Anakin Skywalker",
+      "xws": "anakinskywalker-delta7baethersprite"
+    },
+    {
+      "name": "Ahsoka Tano",
+      "xws": "ahsokatano-delta7baethersprite"
+    },
+    {
+      "name": "Barriss Offee",
+      "xws": "barrissoffee-delta7baethersprite"
+    },
+    {
+      "name": "Luminara Unduli",
+      "xws": "luminaraunduli-delta7baethersprite"
     }
   ],
   "ffg": 61,
