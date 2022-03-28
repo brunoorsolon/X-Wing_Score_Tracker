@@ -1,6 +1,6 @@
 disableSave = false
 
-module_version = '1.5'
+module_version = '1.5.1'
 
 buttonFontColor = {0/255, 0/255, 0/255, 255/255}
 buttonColor = {255/255, 255/255,255/255, 255/255}
@@ -1699,81 +1699,87 @@ function click_import_squadron(tableIndex)
 end
 
 function importSquadCallback(rawData, tableIndex, type)
-    local pointInputList = nil
-    local pilotInputList = nil
-    local shipCount = 0
 
-    if tableIndex == 1 then
-        pointInputList = ref_componentsData.point_input_p1
-        pilotInputList = ref_componentsData.pilot_input_p1
+    if rawData.response_code != 200 or rawData.error != ''  then
+        ref_componentsData.import_squad_input[tableIndex].value = 'Invalid data'
+        self.editInput({index=ref_componentsData.import_squad_input[tableIndex].inputIndex, value='Invalid data'})
     else
-        pointInputList = ref_componentsData.point_input_p2
-        pilotInputList = ref_componentsData.pilot_input_p2
-    end
+        local pointInputList = nil
+        local pilotInputList = nil
+        local shipCount = 0
 
-    local xwsData = ''
-    local xwsRaw = ''
-    if type == 'yasb' then
-        xwsData = JSON.decode(rawData.text)
-        xwsRaw = rawData.text
-    else
-        xwsData = JSON.decode(rawData)
-        xwsRaw = rawData
-
-        if xwsData.vendor.yasb then
-            updateSquadURL(xwsData.vendor.yasb.link, tableIndex)
+        if tableIndex == 1 then
+            pointInputList = ref_componentsData.point_input_p1
+            pilotInputList = ref_componentsData.pilot_input_p1
         else
-            local headers = {
-                ["Content-Type"] = "application/json",
-                Accept = "application/json",
-            }
-            WebRequest.custom('https://squad2xws.herokuapp.com/yasb/reverse/', "POST", true, xwsRaw, headers,
-            function(resp)
-                local jsonData = JSON.decode(resp.text)
-                if jsonData == 404 then return end
-                updateSquadURL(jsonData.url, tableIndex)
-            end)
+            pointInputList = ref_componentsData.point_input_p2
+            pilotInputList = ref_componentsData.pilot_input_p2
         end
-    end
 
-    local faction = xws_reference.factions[xwsData.faction]
+        local xwsData = ''
+        local xwsRaw = ''
+        if type == 'yasb' then
+            xwsData = JSON.decode(rawData.text)
+            xwsRaw = rawData.text
+        else
+            xwsData = JSON.decode(rawData)
+            xwsRaw = rawData
 
-    for i, data in ipairs(xwsData.pilots) do
-        if i > 8 then break end
-        pilotInputList[i].pilotCode = data.id
-        pilotInputList[i].value = data.id
-        pilotInputList[i].shipCode = data.ship
-        self.editInput({index=pilotInputList[i].inputIndex, value=data.id})
-
-        pointInputList[i].value = data.points
-        self.editInput({index=pointInputList[i].inputIndex, value=data.points})
-
-        shipCount = shipCount + 1
-    end
-
-    local shipsTemp = {}
-    local hash = {}
-    local unique_ships = {}
-
-    for i, data in ipairs(pilotInputList) do
-        table.insert(shipsTemp, data.shipCode)
-    end
-    for _,v in ipairs(shipsTemp) do
-       if (not hash[v]) then
-           unique_ships[#unique_ships+1] = v
-           hash[v] = true
-       end
-    end
-
-    local json_url = ""
-    for i, data in ipairs(unique_ships) do
-        if xws_reference.ships[data] then
-            json_url = "https://raw.githubusercontent.com/brunopugliese/X-Wing_Score_Tracker/main/assets/xwsdata/" .. faction .. "/" .. xws_reference.ships[data] .. ".json"
-            WebRequest.get(json_url, function(b) updatePilotNamesCallback(b, pilotInputList) end)
+            if xwsData.vendor.yasb then
+                updateSquadURL(xwsData.vendor.yasb.link, tableIndex)
+            else
+                local headers = {
+                    ["Content-Type"] = "application/json",
+                    Accept = "application/json",
+                }
+                WebRequest.custom('https://squad2xws.herokuapp.com/yasb/reverse/', "POST", true, xwsRaw, headers,
+                function(resp)
+                    local jsonData = JSON.decode(resp.text)
+                    if jsonData == 404 then return end
+                    updateSquadURL(jsonData.url, tableIndex)
+                end)
+            end
         end
-    end
 
-    toggle_squad_details(tableIndex,'show',shipCount)
+        local faction = xws_reference.factions[xwsData.faction]
+
+        for i, data in ipairs(xwsData.pilots) do
+            if i > 8 then break end
+            pilotInputList[i].pilotCode = data.id
+            pilotInputList[i].value = data.id
+            pilotInputList[i].shipCode = data.ship
+            self.editInput({index=pilotInputList[i].inputIndex, value=data.id})
+
+            pointInputList[i].value = data.points
+            self.editInput({index=pointInputList[i].inputIndex, value=data.points})
+
+            shipCount = shipCount + 1
+        end
+
+        local shipsTemp = {}
+        local hash = {}
+        local unique_ships = {}
+
+        for i, data in ipairs(pilotInputList) do
+            table.insert(shipsTemp, data.shipCode)
+        end
+        for _,v in ipairs(shipsTemp) do
+           if (not hash[v]) then
+               unique_ships[#unique_ships+1] = v
+               hash[v] = true
+           end
+        end
+
+        local json_url = ""
+        for i, data in ipairs(unique_ships) do
+            if xws_reference.ships[data] then
+                json_url = "https://raw.githubusercontent.com/brunopugliese/X-Wing_Score_Tracker/main/assets/xwsdata/" .. faction .. "/" .. xws_reference.ships[data] .. ".json"
+                WebRequest.get(json_url, function(b) updatePilotNamesCallback(b, pilotInputList) end)
+            end
+        end
+
+        toggle_squad_details(tableIndex,'show',shipCount)
+    end
 end
 
 function updatePilotNamesCallback(webReturn, pilotInputList)
